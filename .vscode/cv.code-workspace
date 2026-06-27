@@ -1,0 +1,14 @@
+{
+    "folders": [
+        {
+            "path": "/Users/osbyrne/curriculum_vitae_unilingual",
+            "name": "Curriculum Vitae - unilingual"
+        }
+    ],
+    "extensions": {
+        "recommendations": [
+            "myriad-dreamin.tinymist",
+            "calebfiggers.typst-companion"
+        ]
+    }
+}
