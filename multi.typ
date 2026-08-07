@@ -1,4 +1,4 @@
-#let language = "fr" // "en" or "fr"
+#let language = "en" // "en" or "fr"
 
 #let tr(en: none, fr: none) = (en: en, fr: fr).at(language)
 
@@ -17,6 +17,16 @@
   author-position: left,
   personal-info-position: left,
 )
+
+#place[
+  #text(size: 1pt, fill: white)[
+    == #tr(en: [ATS Keywords], fr: [Mots-clés ATS])
+    #tr(
+      en: [Software Engineer, Software Developer, C\# Developer, .NET Developer, backend development, full-stack development, application development, financial technology, banking systems, enterprise software, software architecture, object-oriented programming, API development, REST API, GraphQL, automated testing, test automation, CI/CD, deployment, database development, SQL, SQLite, cloud computing, Cloudflare, web applications, Agile, Git, Docker, requirements gathering, client relations, technical documentation],
+      fr: [Ingénieur logiciel, développeur logiciel, développeur C\#, développeur .NET, développement backend, développement full-stack, développement d'applications, fintech, systèmes bancaires, logiciels d'entreprise, architecture logicielle, programmation orientée objet, développement d'API, API REST, GraphQL, tests automatisés, automatisation des tests, CI/CD, déploiement, développement de bases de données, SQL, SQLite, cloud computing, Cloudflare, applications web, Agile, Git, Docker, recueil des besoins, relation client, documentation technique],
+    )
+  ]
+]
 
 #emph(tr(
   en: [Young bilingual engineer with an international background and banking experience, seeking to broaden his experience through a V.I.E.],
