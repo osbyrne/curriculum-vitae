@@ -1,22 +1,91 @@
-#let language = "en" // "en" or "fr"
+#let language = "fr" // "en" or "fr"
 
 #let tr(en: none, fr: none) = (en: en, fr: fr).at(language)
 
-#import "@preview/basic-resume:0.2.9": *
+// Local implementation of `@preview/basic-resume:0.2.9`.
+// Based on https://github.com/stuxf/basic-typst-resume-template (Unlicense) v0.2.9
+// It is embedded here so this resume has no package dependencies.
 
-#show: resume.with(
-  author: "Oscar Byrne",
-  location: tr(en: "Paris, France", fr: "Paris, France"),
-  email: "osbyrne1@gmail.com",
-  github: "github.com/osbyrne",
-  linkedin: "linkedin.com/in/osbyrne",
-  phone: "+33 7 69 56 44 27",
-  accent-color: "#000000",
-  font: "New Computer Modern",
-  paper: "a4",
-  author-position: left,
-  personal-info-position: left,
+#let generic-two-by-two(top-left: "", top-right: "", bottom-left: "", bottom-right: "") = [
+  #top-left #h(1fr) #top-right \
+  #bottom-left #h(1fr) #bottom-right
+]
+
+#let generic-one-by-two(left: "", right: "") = [#left #h(1fr) #right]
+
+#let dates-helper(start-date: "", end-date: "") = {
+  start-date + " " + $dash.em$ + " " + end-date
+}
+
+#let edu(institution: "", dates: "", degree: "", location: "") = {
+  generic-two-by-two(
+    top-left: strong(institution),
+    top-right: location,
+    bottom-left: emph(degree),
+    bottom-right: emph(dates),
+  )
+}
+
+#let work(title: "", dates: "", company: "", location: "") = {
+  generic-two-by-two(
+    top-left: strong(title),
+    top-right: dates,
+    bottom-left: company,
+    bottom-right: emph(location),
+  )
+}
+
+#let project(role: "", name: "", url: "", dates: "") = {
+  generic-one-by-two(
+    left: {
+      if role == "" {
+        [*#name* #if url != "" and dates != "" [ (#link("https://" + url)[#url])]]
+      } else {
+        [*#role*, #name #if url != "" and dates != "" [ (#link("https://" + url)[#url])]]
+      }
+    },
+    right: {
+      if dates == "" and url != "" { link("https://" + url)[#url] } else { dates }
+    },
+  )
+}
+
+#let extracurriculars(activity: "", dates: "") = {
+  generic-one-by-two(left: strong(activity), right: dates)
+}
+
+#set document(author: "Oscar Byrne", title: "Oscar Byrne")
+#set text(font: "New Computer Modern", size: 10pt, lang: "en", ligatures: false)
+#set page(margin: 0.5in, paper: "a4")
+
+#show link: underline
+#show heading.where(level: 2): it => [
+  #pad(top: 0pt, bottom: -10pt, [#smallcaps(it.body)])
+  #line(length: 100%, stroke: 1pt)
+]
+#show heading: set text(fill: rgb("#000000"))
+#show link: set text(fill: rgb("#000000"))
+#show heading.where(level: 1): it => [
+  #set align(left)
+  #set text(weight: 700, size: 20pt)
+  #pad(it.body)
+]
+
+= Oscar Byrne
+
+#pad(
+  top: 0.25em,
+  align(left)[
+    +33 7 69 56 44 27  |
+    Paris, France  |
+    #link("mailto:osbyrne1@gmail.com")[#"osbyrne1@gmail.com"]  |
+    #link("https://github.com/osbyrne")[github.com/osbyrne]  |
+    #link("https://linkedin.com/in/osbyrne")[linkedin.com/in/osbyrne]
+  ],
 )
+
+#set par(justify: true)
+
 
 #place[
   #text(size: 1pt, fill: white)[
