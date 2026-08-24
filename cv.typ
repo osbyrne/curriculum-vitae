@@ -1,4 +1,4 @@
-#let language = "fr" // "en" or "fr"
+#let language = "en" // "en" or "fr"
 
 #let tr(en: none, fr: none) = (en: en, fr: fr).at(language)
 
