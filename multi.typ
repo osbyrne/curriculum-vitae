@@ -56,7 +56,7 @@
 
 #set document(author: "Oscar Byrne", title: "Oscar Byrne")
 #set text(font: "New Computer Modern", size: 10pt, lang: "en", ligatures: false)
-#set page(margin: 0.5in, paper: "a4")
+#set page(margin: (x: 0.5in, top: 0.45in, bottom: 0.35in), paper: "a4")
 
 #show link: underline
 #show heading.where(level: 2): it => [
@@ -97,10 +97,14 @@
   ]
 ]
 
-#emph(tr(
-  en: [Young bilingual engineer with an international background and banking experience, seeking to broaden his experience through a V.I.E.],
-  fr: [Jeune ingénieur bilingue, parcours international, professionnel dans le secteur bancaire cherche à diversifier ses expériences à travers une V.I.E.],
-))
+#align(center)[
+  #text(size: 11pt, weight: 700)[
+    #tr(
+      en: [Full-Stack Developer | Seeking a V.I.E. | Available October 2026 (12–24 months) | International mobility],
+      fr: [Développeur Full-Stack | Candidat V.I.E. | Disponible en octobre 2026 (12 à 24 mois) | Mobilité internationale],
+    )
+  ]
+]
 
 == #tr(en: [Education], fr: [Formation])
 
@@ -276,10 +280,13 @@
 #extracurriculars(
   activity: link(
     "https://www.youtube.com/@SoulBrothers777",
-    tr(en: "Guitar", fr: "Guitare"),
+    tr(
+      en: "Guitar (10 years, including 3 years performing professionally in a band)",
+      fr: "Guitare (10 ans, dont 3 ans en groupe professionnel)",
+    ),
   )
     + tr(
-      en: ", climbing, mountaineering, team sports",
-      fr: ", escalade, alpinisme, sports collectifs",
+      en: ", basketball (team captain for one year), climbing, mountaineering",
+      fr: ", basket-ball (capitaine pendant un an), escalade, alpinisme",
     ),
 )
